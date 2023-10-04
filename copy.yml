@@ -10,7 +10,11 @@
       service:
         name: apache2
         state: started
-        enabled: True
+    - name: Add firewall rules
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
     - name: Deploy static website
       copy:
         src: index.html
